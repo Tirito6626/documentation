@@ -1,6 +1,6 @@
 ---
-title: Main
-description: The most bash JSON parser
+title: Manage JSON with just your shell.
+description: First JSON parser written in pure bash with arrays/objects transformation support
 template: splash
 hero:
   tagline: The most bash JSON parser
@@ -8,9 +8,9 @@ hero:
     - text: Get started
       link: /bash2json/guides/installation/
       icon: right-arrow
-    - text: Read the Starlight docs
-      link: https://starlight.astro.build
-      icon: external
+    - text: Reference
+      link: /bash2json/reference/core/
+      icon: setting
       variant: minimal
 ---
 
@@ -19,16 +19,16 @@ import { Card, CardGrid } from '@astrojs/starlight/components';
 ## Next steps
 
 <CardGrid stagger>
-	<Card title="Update content" icon="pencil">
-		Edit `src/content/docs/index.mdx` to see this page change.
+	<Card title="No dependencies" icon="document">
+		bash2json only requires bash 5.2+ for it's full functionality.
 	</Card>
-	<Card title="Add new content" icon="add-document">
-		Add Markdown or MDX files to `src/content/docs` to create new pages.
+	<Card title="Open-source" icon="pencil">
+		You can freely change any function and it's behavior or reuse them in other projects.
 	</Card>
-	<Card title="Configure your site" icon="setting">
-		Edit your `sidebar` and other config in `astro.config.mjs`.
+	<Card title="Fast and lightweight" icon="rocket">
+		Pure bash code allows it to be fast and be less than `20Kb` in size
 	</Card>
-	<Card title="Read the docs" icon="open-book">
-		Learn more in [the Starlight Docs](https://starlight.astro.build/).
+	<Card title="Convertation features" icon="open-book">
+		bash2json supports associative/indexed arrays to JSON convertation and vice versa
 	</Card>
 </CardGrid>
