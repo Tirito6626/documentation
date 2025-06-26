@@ -3,8 +3,6 @@ title: Installation
 description: bash2json installation
 ---
 
-So you came here to install and use this (not) beautiful tool... 
-
 ## 1. Method: Clone the repository
 Clone the repositoty using git:
 ```bash
@@ -21,7 +19,7 @@ And now you can use
 ./bash2json/bash2json --version
 ```
 
-### 2. Method: Download the file directly
+## 2. Method: Download the file directly
 
 Download the file
 ```
@@ -32,5 +30,3 @@ and make the file executable
 ```
 chmod +x ./bash2json
 ```
-
-done!
