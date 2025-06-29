@@ -18,7 +18,7 @@ bash2json '{ "foo": { "foo1": "bar" } }' --append 'foo.foo2' 'bar1'
 You must include `[]` to key name to add item to it's array.
 ```bash
 bash2json '{ "foo": [{ "foo1": "bar" }] }' --append 'foo[]' 'bar1'
-# {"foo":{"foo1":"bar","foo2":"bar1"}}
+# {"foo":[{"foo1":"bar"},"bar1"]}
 ```
 
 ## Appending object inside array

@@ -25,9 +25,9 @@ You can reuse any function from bash2json, but:
 - `json_trim`: none
 - `json_append`: `json_trim`, `json_query`, `error`
 - `json_list`: none
-- `json_validate`: `json_trim`
-- `json_query`: `json_trim`
+- `json_validate`: none
+- `json_query`: `json_list`
 - `arr_to_json`: `json_append`
-- `json_to_arr`: `json_trim`
+- `json_to_arr`: `json_list`
 - `bash2json`: `json_validate`, `json_append`, `json_query`, `json_to_arr`, `json_trim`, `arr_to_json`
 
