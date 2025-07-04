@@ -30,5 +30,8 @@ title: Actions and syntax
 > Arguments `<JSON input>`
 > Supported options: --no-validate
 
+- `--pretty`: 
+> Arguments: `<JSON input>`
+
 - `--validate`
 > Arguments `<JSON input>`

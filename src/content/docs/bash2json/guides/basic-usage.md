@@ -25,7 +25,22 @@ bash2json '{ "foo": [{ "foo": "bar" },{ "foo": "othervalue" }] }' 'foo[0].foo' -
 # bar
 ```
 
-You can also validate JSON using `--validate`:
+You can also make JSON more readable by using `--pretty` option:
+```bash
+bash2json '{ "foo": [{ "foo": "bar" },{ "foo": "othervalue" }] }' --pretty
+#{
+#  "foo": [
+#    {
+#      "foo": "bar"
+#    },
+#    {
+#      "foo": "othervalue"
+#    }
+#  ]
+#}
+```
+
+You can validate JSON using `--validate`:
 ```bash
 bash2json '{ "foo": [{ "foo": "bar" },{ "foo": "othervalue" }] }' --validate
 # returns nothing on success

@@ -5,7 +5,8 @@ There is no actual "core", bash2json has simple system
 
 `bash2json` file contains all functions:
 - `error <message>`: self-explanatory, error message
-- `json_trim <json>`: trim JSON
+- `json_trim <json> <don't return?>`: trim JSON
+- `json_pretty <json> <don't return?>`: prettify JSON
 - `json_append <json> <key> <value?> <don't return?>`: append JSON
 - `json_list <json> <don't return?>`: list JSON object/array keys
 - `json_validate <json>`: validate JSON
@@ -23,11 +24,12 @@ You can reuse any function from bash2json, but:
 ## Function dependencies:
 - `error`: none
 - `json_trim`: none
+- `json_pretty`: none
 - `json_append`: `json_trim`, `json_query`, `error`
 - `json_list`: none
 - `json_validate`: none
 - `json_query`: `json_list`
 - `arr_to_json`: `json_append`
 - `json_to_arr`: `json_list`
-- `bash2json`: `error`, `json_validate`, `json_append`, `json_query`, `json_to_arr`, `json_trim`, `arr_to_json`
+- `bash2json`: `error`, `json_validate`, `json_append`, `json_query`, `json_to_arr`, `json_trim`, `json_pretty`, `arr_to_json`
 
