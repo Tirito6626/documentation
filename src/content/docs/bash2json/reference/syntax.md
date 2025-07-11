@@ -4,7 +4,7 @@ title: Actions and syntax
 - `--from-json`: 
 > Function: `json_to_arr`
 > Arguments: `<JSON input>` `<array name>`
-> Supported options: --output=`<array name>`, --no-validate
+> Supported options: --no-validate
 
 - `--to-json`:
 > Function: `arr_to_json`
