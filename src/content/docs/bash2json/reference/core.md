@@ -19,7 +19,7 @@ There is no actual "core", bash2json has simple system
 ## Reusing functions
 You can reuse any function from bash2json, but:
 - You can't copyright any separate function as own code
-- Each function depends on other functions to properly work
+- Some functions depend on other functions to properly work
 
 ## Function dependencies:
 - `error`: none
@@ -27,8 +27,8 @@ You can reuse any function from bash2json, but:
 - `json_pretty`: none
 - `json_append`: `json_trim`, `json_query`, `error`
 - `json_list`: none
-- `json_validate`: none
-- `json_query`: `json_list`
+- `json_validate`: `error`
+- `json_query`: `json_list`, `error`
 - `arr_to_json`: `json_append`
 - `json_to_arr`: `json_list`
 - `bash2json`: `error`, `json_validate`, `json_append`, `json_query`, `json_to_arr`, `json_trim`, `json_pretty`, `arr_to_json`
