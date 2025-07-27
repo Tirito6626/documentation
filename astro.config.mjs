@@ -7,6 +7,7 @@ export default defineConfig({
 	integrations: [
 		starlight({
 			title: "_tirito_'s docs",
+			plugins: [starlightThemeRapide()],
 			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/Tirito6626' }, { icon: 'discord', label: 'Discord Server', href: 'https://discord.gg/partners/f8DH7YYCcj' }],
 			sidebar: [
 				{
