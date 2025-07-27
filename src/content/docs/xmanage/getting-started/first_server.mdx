@@ -1,0 +1,41 @@
+---
+title: First server
+---
+Let's say, you created your first server, but what's next?
+
+ ## Managing your server 
+After creating your server you should move/copy your project's files to it. 
+```bash 
+:~# xmanage server myServer file copy myFolder ... 
+```
+To make sure your files are in your server, look into server's directory
+
+```bash 
+:~# xmanage server myServer file list
+
+myFolder
+```
+Perfect! We can start our server!
+```bash
+:~# xmanage server myServer start
+```
+
+## Checking server's status
+
+Did it start? It didn't fail? How do we know? Let's check our server
+
+```bash
+:~# xmanage server myServer status
+```
+
+## Making backups
+
+After you made sure your server is running fine, you can create extra backup for the future
+
+```bash
+:~# xmanage server myServer backup create
+```
+
+## Downloading backups
+There is no official way to download backups, but you can access them from Xmanage's server backups directory.
+Our backup is stored in `/etc/xmanage/backups/[Server ID]`, so you need to go into this directory and download `.tar.gz` archive

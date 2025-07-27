@@ -1,21 +1,3 @@
----
-title: Installation
----
-
-## Requirements
-- [jq](https://jqlang.github.io/jq/download/)
-- [nodejs](https://github.com/nodesource/distributions) 
-- [bash](https://www.gnu.org/software/bash/)
-- [curl](https://curl.se/download.html)
-## Installation
-To install code, run this:
-
-```php
-git clone https://github.com/Tirito6626/bashcord.git
-```
-
-Now, lets create `main.sh` file:
-```bash filename="main.sh" showLineNumbers
 #!/bin/bash
 source /path/to/bashcord/src/bashcord
 clientBuilder;
@@ -39,12 +21,3 @@ channel_message_send <put your channel id here> "$message_json" # sending our me
  }
 event on "ready" startup # letting bashcord now which function what function should be executed on startup
 startClient # start client 
-```
-
-Note: if you want to run bashcord on Pterodactyl or on any environment, that doesn't have required tools, you should change these lines in `/src/bashcord`
-```bash
-jq_binary="/path/to/jq"
-nodejs_binary="/path/to/node"
-npm_binary="/path/to/npm"
-```
-

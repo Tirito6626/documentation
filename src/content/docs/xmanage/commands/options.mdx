@@ -1,0 +1,92 @@
+---
+title: Available options
+---
+### --color=[color]          
+<p>Uses custom color in every command instead of cyan</p>
+
+<p>Supported colors:</p>
+<p>red, green, yellow, blue, magenta, cyan, gray, lime_yellow, powder_blue</p>
+<p>Other colors:</p>
+<p>1-255 ANSI color number</p>
+ 
+![colors](https://i.stack.imgur.com/a2S4s.png)
+<p>Example usage:</p>
+```ansi
+root@xmanage:~# xmanage help --color=red
+```
+---
+
+### --no-color
+Disables every color from the commands
+<p>Example usage:</p>
+```ansi
+root@xmanage:~# xmanage help --no-color
+```
+
+### ---lines=N
+Return N lines of logs
+
+### --json 
+JSON mode; Any output is in JSON form, input is parsed as JSON
+JSON format is the same for both API and CLI JSON
+
+---
+### --port=[port]
+Makes API use custom port, instead of 8041
+<p>Example usage:</p>
+```ansi
+root@xmanage:~# xmanage api run --port=3050
+[38;5;38m[Info][0m Starting API on port 3050
+```
+
+---
+### --version
+Show current version and license
+<p>Example usage:</p>
+```ansi
+root@xmanage:~# xmanage --version
+```
+
+### --no-mount 
+Create server without mount point
+<p>Example usage:</p>
+```ansi
+root@xmanage:~# xmanage server create --no-mount
+```
+
+---
+### --no-restart
+Don't restart server during the restoring
+<p>Example usage:</p>
+```ansi
+root@xmanage:~# xmanage server restore-backup MyServer 2024-02-21T12:53+01:00.tar.gz --no-restart
+```
+---
+### --ssl 
+Enables SSL for API
+<p>Example usage:</p>
+```ansi
+root@xmanage:~# xmanage api run --port=3050 --ssl
+```
+
+---
+### --ssl-cert
+Use SSL certificate file for SSL
+<p>Example usage:</p>
+```ansi
+root@xmanage:~# xmanage api run --port=3050 --ssl --ssl-cert=./cert.pem
+```
+
+---
+### --ssl-key
+Use SSL private key file for SSL
+<p>Example usage:</p>
+```ansi
+root@xmanage:~# xmanage api run --port=3050 --ssl --ssl-key=./key.pem
+```
+
+
+
+
+
+

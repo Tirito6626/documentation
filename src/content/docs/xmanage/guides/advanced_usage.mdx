@@ -1,0 +1,26 @@
+---
+title: Advanced usage
+---
+After understanding the configuration you may want to edit it, or?
+
+### Changing basic server details
+You can pretty much change any key in your server service file. Sometimes you even have to change them in order to make your code work properly
+#### Security parameters
+These are the main parameters that limit server's environment
+
+```ini
+ PrivateDevices=true # sets up a new /dev/ mount for the executed processes and only adds API pseudo devices such as /dev/null, /dev/zero or /dev/random (as well as the pseudo TTY subsystem) to it, but no physical devices such as /dev/sda, system memory /dev/mem, system ports /dev/port and others
+ ProtectControlGroups=true # makes /sys/fs/cgroup/ read-only
+ ProtectHome=true # makes /user/home directory read-only
+ ProtectKernelTunables=true # makes /proc/sys/, /sys/, /proc/sysrq-trigger, /proc/latency_stats, /proc/acpi, /proc/timer_stats, /proc/fs and /proc/irq read-only 
+ RestrictSUIDSGID=true # disables ability to create SUID/SGID files or directories
+ DynamicUser=true # use dynamic user instead of root
+```
+
+### Modifying server's configuration
+To modify server's configuration, use:
+```bash
+:~# xmanage server myServer edit-systemd # myServer should be replaced with your server name/ID
+```
+### Adding additional options
+All available options can be found [here](https://www.freedesktop.org/software/systemd/man/latest/systemd.exec.html)

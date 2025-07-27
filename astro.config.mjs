@@ -39,6 +39,23 @@ export default defineConfig({
 						}
 					   ]
 				},
+				{
+					label: 'Xmanage',
+					items: [
+						{ 
+							label: 'Getting started', 
+							autogenerate: { directory: 'xmanage/getting-started' }
+						},
+						{ 
+						   label: 'Guides', 
+						   autogenerate: { directory: 'xmanage/guides' }
+						},
+						{ 
+						   label: 'Commands', 
+						   autogenerate: { directory: 'xmanage/commands' }
+						}
+					   ]
+				}
 			],
 		}),
 	],

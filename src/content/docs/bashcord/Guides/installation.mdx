@@ -1,0 +1,28 @@
+---
+title: Installation
+---
+import { Code } from '@astrojs/starlight/components';
+import example from "./example.sh?raw";
+
+## Requirements
+- [jq](https://jqlang.github.io/jq/download/)
+- [nodejs](https://github.com/nodesource/distributions) 
+- [bash](https://www.gnu.org/software/bash/)
+- [curl](https://curl.se/download.html)
+## Installation
+To install code, run this:
+
+```php
+git clone https://github.com/Tirito6626/bashcord.git
+```
+
+Now, lets create `main.sh` file:
+<Code title="index.sh" lang="sh" code={example} />
+
+Note: if you want to run bashcord on Pterodactyl or on any environment, that doesn't have required tools, you should change these lines in `/src/bashcord`
+```bash
+jq_binary="/path/to/jq"
+nodejs_binary="/path/to/node"
+npm_binary="/path/to/npm"
+```
+

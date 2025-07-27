@@ -1,0 +1,107 @@
+---
+title: Using the API
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+<Aside title="Deprecated" type="danger">This section is deprecated and is made for pre-V1 versions of Xmanage.</Aside>
+
+After you read that all, you may think, "Does it have any API or something like that to interact with?" 
+
+## Using API
+To start XManage API, use:
+```bash
+:~# xmanage api start
+```
+## Accesing API in Web
+Check if API is running
+```bash
+:~# xmanage api status
+```
+After that, check if your port is opened and check this URL:
+```bash
+http://<server_ip>:8041/ # or your own port
+https://<server_ip>:8041/ # in case of using it with SSL
+```
+## Available API endpoints
+
+<Aside>
+Every endpoint requires authorization header: 
+```
+Authorization: Bearer <apikey>
+```
+API key can be generated using `xmanage api key generate`
+</Aside>
+
+`GET`  `/servers` 
+ > Will show server list
+
+`POST` `/servers` 
+> Will create new server
+> 
+> Data:
+```json
+{ 
+    "server_name": "string", // e.g. myServer
+    "cpu_limit": "string", // e.g. 100%
+    "ram_limit": "string", // e.g. 128M
+    "swap_limit": "string", // e.g. 100M
+    "disk_limit": "string", // e.g. 1G
+    "io_weight": 500, // int 
+    "ports": "string", // e.g. 3000
+    "startup": "string" // e.g. node index.js
+}
+```
+
+`GET` `/servers/<server id>`  
+> Shows server infomation 
+
+`DELETE` `/servers/<server id>` 
+> Deletes server
+
+`PATCH` `/servers/<server id>` 
+> Updates server information
+>
+> Data:
+```json
+{ 
+    "server_name": "string", // e.g. myServer
+    "cpu_limit": "string", // e.g. 100%
+    "ram_limit": "string", // e.g. 128M
+    "swap_limit": "string", // e.g. 100M
+    "disk_limit": "string", // e.g. 1G
+    "io_weight": 500, // int 
+    "ports": "string", // e.g. 3000
+    "startup": "string" // e.g. node index.js
+}
+```
+
+`GET` `/servers/<server id>/status`
+> Shows server status
+
+`GET` `/servers/<server id>/backups` 
+> Shows server's backups
+
+`POST` `/server/<server id>/backups` 
+> Creates backup using server's files
+
+`DELETE` `/server/<server id>/backups/<backup name>` 
+> Deletes server's backup
+
+`GET` `/servers/<server id>/files`
+> Shows server files
+
+`GET` `/servers/<server id>/logs` 
+> Shows last 50 lines from server logs
+
+`POST` `/servers/<server id>/start` 
+> Starts server
+
+`POST` `/servers/<server id>/stop` 
+> Stops server
+
+`POST` `/servers/<server id>/restart` 
+> Restarts server
+ 
+`PUT` `/servers/<server id>/backups/<backup name>` 
+> Restores server's files from backup

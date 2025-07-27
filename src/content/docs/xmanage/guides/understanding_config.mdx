@@ -1,0 +1,80 @@
+---
+title: Understanding the config
+---
+```ini
+[Unit]
+ Description=myServer
+[Service]
+ ExecStart=bash index.sh
+ SocketBindAllow=3000
+ IOWeight=500
+ MemoryMax=128M
+ MemorySwapMax=0M
+ CPUQuota=100%
+ ReadWritePaths=+/etc/xmanage/volumes/1cff94816b
+ WorkingDirectory=/etc/xmanage/volumes/1cff94816b
+ PrivateDevices=true
+ ProtectControlGroups=true
+ ProtectHome=true
+ ProtectKernelTunables=true
+ RestrictSUIDSGID=true
+ DynamicUser=true
+[Install]
+ WantedBy=default.target 
+```
+That's default server service configuration. It's complicated, or? Let me explain it!
+
+```ini
+[Unit]
+Description=myServer
+```
+Nothing special, just server description
+
+```ini
+[Service]
+ ExecStart=bash index.sh
+```
+Nothing special too, server startup command
+
+```ini
+SocketBindAllow=3000
+```
+Allows server to bind on port 3000
+
+```ini
+IOWeight=500
+```
+Server's Input/Output Priority
+
+```ini
+ MemoryMax=128M
+ MemorySwapMax=0M
+ CPUQuota=100%
+ ```
+ Server's resources limit like CPU, RAM and Swap
+
+```ini
+ReadWritePaths=+/etc/xmanage/volumes/1cff94816b
+WorkingDirectory=/etc/xmanage/volumes/1cff94816b
+```
+Sets server's working directory and allows write/read from this directory
+
+```ini
+ PrivateDevices=true
+ ProtectControlGroups=true
+ ProtectHome=true
+ ProtectKernelTunables=true
+ RestrictSUIDSGID=true
+ ```
+ Security options, we'll leave it for now
+
+```ini
+ DynamicUser=true
+ ```
+Very strict security option, if you don't want to limit your server, change this value to `false` and set `User=root`
+
+```ini
+[Install]
+ WantedBy=default.target 
+```
+Basically the priority of startup on the boot, starts with the default priority with the rest of default services
