@@ -1,0 +1,147 @@
+---
+title: Web API
+---
+
+import { Aside, Code } from '@astrojs/starlight/components';
+
+<Aside>
+Every endpoint requires authorization header: 
+```
+Authorization: Bearer <apikey>
+```
+API key can be generated using `xmanage api key generate`
+</Aside>
+
+Xmanage's web API supports 
+- HTTP(S)
+- basic CORS
+- Query and POST data (as JSON)
+- audit (WIP)
+- servers management
+- file management (upload is limited to non-binary files)
+- backups management (including download)
+
+## Running the API
+
+To start using the API, you have to use `xmanage initialize api` to initialize directories for it, if you didn't do it on the first initialization
+
+API can be started on the background
+```
+xmanage api start
+```
+
+or run directly 
+
+```
+xmanage api run <options>
+```
+
+`api run` supports following options: 
+- `--port=port`: Run API over a custom port, e.g. 3000 
+- `--ssl, --ssl-key=file, --ssl-cert=file`: Enable SSL for API and use `file` file key and `file` certificate key respectivelly
+
+Example of running the API with HTTPS on default port: 
+
+```
+xmanage api run --port=443 --ssl --ssl-key='./key.pem' --ssl-cert='./cert.pem'
+```
+SyjEXHMYTJZcMA7t.ua9qzF52f6LI7n7mYIOTh5Y-mtgUCCv1M
+Web API currently doesn't supports permissions system for API keys, any key has full access to any route, so be careful with the API keys
+
+## Output format 
+Every API route comes in the following format: 
+```
+{ 
+    "status": "success", // OR "failed" 
+    "data": {
+        // data
+    } // OR null OR "error": "<error>"
+}
+```
+
+## API routes
+
+Web API covers almost every function of the CLI JSON API with the following routes:
+
+### GET /audit/[server_id]/ (WIP)
+Returns audit log of server 
+Query options: `lines=int?`
+
+### GET /overview
+Shows an overview of servers
+
+Response format: 
+<Code code=' 
+   "status": "success", 
+   "data": { 
+     "servers": { 
+        "total": int, 
+        "active": int, 
+        "inactive": int, 
+        "activating": int,
+        "deactivating": int,
+        "failed": int
+      }, 
+     "resources": {
+       "ram_total": int (MB), 
+       "ram_allocated": int (MB), 
+       "disk_total": int (MB), 
+       "disk_allocated": int (MB), 
+       "swap_total": int (MB), 
+       "swap_allocated": int (MB) 
+      },  
+     "system": {
+       "uptime": string, 
+       "distro": string, 
+       "cores": int, 
+       "version": string 
+      } 
+    } 
+} 
+' lang="json">
+
+### GET /servers
+Returns a list of all serrver objects
+Response format: 
+<Code code=' 
+   "status": "success", 
+   "data": [
+      {
+        "server_id": string, 
+        "server_name": string,
+        "cpu_limit": int, 
+        "ram_limit": int (MB),
+        "swap_limit": int (MB),
+        "disk_limit": int (MB),
+        "io_weight": int,
+        "ports": string,
+        "startup": string, 
+        "extra_options": array, 
+        "created_at": string
+      }, 
+      ...
+    ]
+' lang='json' /> 
+
+### GET /servers-status 
+Returns a list of all server status objects
+Response format: 
+<Code code=' 
+   "status": "success", 
+   "data": [
+      {
+        "server_id": string, 
+        "server_name": string,
+        "status": string // "active" OR "inactive" OR "activating" OR "deactivating" OR "failed"
+        "cpu_used": int, 
+        "cpu_total": int, 
+        "ram_used": int (MB), 
+        "ram_total": int (MB),
+        "disk_used": int (MB), 
+        "disk_total": int (MB),
+        "io_weight": int,
+        "ports": string
+      }, 
+      ...
+    ]
+' lang='json' /> 
