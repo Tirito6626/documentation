@@ -71,7 +71,8 @@ Query options: `lines=int?`
 Shows an overview of servers
 
 Response format: 
-<Code code=' 
+```
+  {
    "status": "success", 
    "data": { 
      "servers": { 
@@ -97,13 +98,14 @@ Response format:
        "version": string 
       } 
     } 
-} 
-' lang="json">
+  } 
+```
 
 ### GET /servers
 Returns a list of all serrver objects
 Response format: 
-<Code code=' 
+```
+  {
    "status": "success", 
    "data": [
       {
@@ -121,12 +123,14 @@ Response format:
       }, 
       ...
     ]
-' lang='json' /> 
+  }
+```
 
 ### GET /servers-status 
 Returns a list of all server status objects
 Response format: 
-<Code code=' 
+```
+  {
    "status": "success", 
    "data": [
       {
@@ -144,4 +148,5 @@ Response format:
       }, 
       ...
     ]
-' lang='json' /> 
+  }
+```
