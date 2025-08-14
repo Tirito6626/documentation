@@ -176,7 +176,7 @@ Response format:
   }
 ```
 
-### <Badge text="GET" variant="note" size="medium" /> /servers/[name or ID]/status
+### <Badge text="GET" variant="note" size="medium" /> /servers/{server}/status
 > Returns server status
 
 > Response format: 
@@ -190,11 +190,69 @@ Response format:
         "ram_limit": int (MB),
         "swap_limit": int (MB),
         "disk_limit": int (MB),
-        "io_weight": int,
-        "ports": string,
-        "startup": string, 
-        "extra_options": array, 
-        "created_at": string
+        "bound_ports": [
+          "<port> (IPv4/IPv6)", 
+          ... 
+          ]
       }
+  }
+```
+
+### <Badge text="GET" variant="note" size="medium" /> /servers/{server}/logs
+> Returns last 50 lines of server's logs
+
+> Query options:
+- `lines=int`: return N lines instead of default 50
+
+> Response format: 
+```
+  {
+   "status": "success", 
+   "data": [ 
+     "%b %d %H:%M:%S <line>", 
+     ...
+   ]
+```
+
+### <Badge text="GET" variant="note" size="medium" /> /servers/{server}/files/{file}/...
+> If {file} is a folder, lists files in a directory, otherwise returns file contents as `text/plain`
+
+> Query options:
+- `depth=int`: Defines whether list files in child directories and how deep to show (default is disabled)
+
+> Response format: 
+```
+  {
+   "status": "success", 
+   "data": [ 
+     { 
+       "type": "directory",
+       "name": string
+       "size": string, 
+       "time": string, 
+       "contents": [
+         {"type":"file","name":"file.txt","size":"6.0K","time":"Aug 10 15:26"}, // example
+         ...
+       ]
+     },
+     ...
+   ]
+  }
+```
+
+### <Badge text="GET" variant="note" size="medium" /> /servers/{server}/backups
+> If {file} is a folder, lists files in a directory, otherwise returns file contents as `text/plain`
+
+> Query options:
+- `depth=int`: Defines whether list files in child directories and how deep to show (default is disabled)
+
+> Response format: 
+```
+  {
+   "status": "success", 
+   "data": [ 
+     "%b %d %H:%M:%S <line>", 
+     ...
+   ]
   }
 ```
