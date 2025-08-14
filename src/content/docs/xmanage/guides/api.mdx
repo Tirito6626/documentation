@@ -2,7 +2,7 @@
 title: Web API
 ---
 
-import { Aside, Code } from '@astrojs/starlight/components';
+import { Aside, Badge } from '@astrojs/starlight/components';
 
 <Aside>
 Every endpoint requires authorization header: 
@@ -14,12 +14,12 @@ API key can be generated using `xmanage api key generate`
 
 Xmanage's web API supports 
 - HTTP(S)
-- basic CORS
+- Basic CORS
 - Query and POST data (as JSON)
-- audit (WIP)
-- servers management
-- file management (upload is limited to non-binary files)
-- backups management (including download)
+- Audit (WIP)
+- Servers management
+- File management (upload is limited to non-binary files)
+- Backups management (including download)
 
 ## Running the API
 
@@ -63,14 +63,15 @@ Every API route comes in the following format:
 
 Web API covers almost every function of the CLI JSON API with the following routes:
 
-### GET /audit/[server_id]/ (WIP)
-Returns audit log of server 
-Query options: `lines=int?`
+### <Badge text="GET" variant="note" /> /audit/[server_id]/ (WIP)
+> Returns audit log of server 
+
+> Query options: `lines=int?`
 
 ### GET /overview
-Shows an overview of servers
+> Shows an overview of servers
 
-Response format: 
+> Response format: 
 ```
   {
    "status": "success", 
@@ -102,7 +103,7 @@ Response format:
 ```
 
 ### GET /servers
-Returns a list of all serrver objects
+Returns a list of all server objects
 Response format: 
 ```
   {
@@ -127,8 +128,9 @@ Response format:
 ```
 
 ### GET /servers-status 
-Returns a list of all server status objects
-Response format: 
+> Returns a list of all server status objects
+
+> Response format: 
 ```
   {
    "status": "success", 
@@ -148,5 +150,51 @@ Response format:
       }, 
       ...
     ]
+  }
+```
+
+### GET /servers/[name or ID]
+> Returns server information
+
+> Response format: 
+```
+  {
+   "status": "success", 
+   "data": {
+        "server_id": string, 
+        "server_name": string,
+        "cpu_limit": int, 
+        "ram_limit": int (MB),
+        "swap_limit": int (MB),
+        "disk_limit": int (MB),
+        "io_weight": int,
+        "ports": string,
+        "startup": string, 
+        "extra_options": array, 
+        "created_at": string
+      }
+  }
+```
+
+### GET /servers/[name or ID]/status
+> Returns server status
+
+> Response format: 
+```
+  {
+   "status": "success", 
+   "data": {
+        "server_id": string, 
+        "server_name": string,
+        "cpu_limit": int, 
+        "ram_limit": int (MB),
+        "swap_limit": int (MB),
+        "disk_limit": int (MB),
+        "io_weight": int,
+        "ports": string,
+        "startup": string, 
+        "extra_options": array, 
+        "created_at": string
+      }
   }
 ```
