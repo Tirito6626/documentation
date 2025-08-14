@@ -23,9 +23,6 @@ Disables every color from the commands
 root@xmanage:~# xmanage help --no-color
 ```
 
-### ---lines=N
-Return N lines of logs
-
 ### --json 
 JSON mode; Any output is in JSON form, input is parsed as JSON
 JSON format is the same for both API and CLI JSON
@@ -53,14 +50,38 @@ Create server without mount point
 ```ansi
 root@xmanage:~# xmanage server create --no-mount
 ```
+---
+### --directory=* 
+Create server with custom directory
+<p>Example usage:</p>
+```ansi
+root@xmanage:~# xmanage server create --directory=./path/to/dir
+```
 
 ---
 ### --no-restart
 Don't restart server during the restoring
 <p>Example usage:</p>
 ```ansi
-root@xmanage:~# xmanage server restore-backup MyServer 2024-02-21T12:53+01:00.tar.gz --no-restart
+root@xmanage:~# xmanage server myServer backup restore 2024-02-21T12:53+01:00.tar.gz --no-restart
 ```
+
+---
+### --no-ptree
+Don't show the process tree
+<p>Example usage:</p>
+```ansi
+root@xmanage:~# xmanage server myServer status --no-ptree
+```
+
+---
+### --lines=*
+Show last N lines of logs
+<p>Example usage:</p>
+```ansi
+root@xmanage:~# xmanage server myServer logs --lines=10
+```
+
 ---
 ### --ssl 
 Enables SSL for API
