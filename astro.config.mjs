@@ -56,7 +56,7 @@ export default defineConfig({
 						   autogenerate: { directory: 'xmanage/guides' }
 						},
 						{ 
-						   slug: 'xmanage/commands/option'
+						   slug: 'xmanage/commands/options'
 						}
 					   ]
 				}
