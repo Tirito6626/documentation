@@ -45,15 +45,18 @@ export default defineConfig({
 					items: [
 						{ 
 							label: 'Getting started', 
-							autogenerate: { directory: 'xmanage/getting-started' }
+							items: [ 
+								{ slug: 'xmanage/getting-started/installing' },
+								{ slug: 'xmanage/getting-started/initialization' },
+								{ slug: 'xmanage/getting-started/first_server' }
+							]
 						},
 						{ 
 						   label: 'Guides', 
 						   autogenerate: { directory: 'xmanage/guides' }
 						},
 						{ 
-						   label: 'Commands', 
-						   autogenerate: { directory: 'xmanage/commands' }
+						   slug: 'xmanage/commands/option'
 						}
 					   ]
 				}
