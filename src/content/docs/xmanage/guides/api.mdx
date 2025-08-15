@@ -176,7 +176,7 @@ Response format:
   }
 ```
 
-### <Badge text="GET" variant="note" size="medium" /> /servers/{server}/status
+### <Badge text="GET" variant="note" size="medium" /> /servers/[name or ID]/status
 > Returns server status
 
 > Response format: 
@@ -198,7 +198,7 @@ Response format:
   }
 ```
 
-### <Badge text="GET" variant="note" size="medium" /> /servers/{server}/logs
+### <Badge text="GET" variant="note" size="medium" /> /servers/[name or ID]/logs
 > Returns last 50 lines of server's logs
 
 > Query options:
@@ -214,7 +214,7 @@ Response format:
    ]
 ```
 
-### <Badge text="GET" variant="note" size="medium" /> /servers/{server}/files/{file}/...
+### <Badge text="GET" variant="note" size="medium" /> /servers/[name or ID]/files/{file}/...
 > If {file} is a folder, lists files in a directory, otherwise returns file contents as `text/plain`
 
 > Query options:
@@ -240,7 +240,7 @@ Response format:
   }
 ```
 
-### <Badge text="GET" variant="note" size="medium" /> /servers/{server}/backups
+### <Badge text="GET" variant="note" size="medium" /> /servers/[name or ID]/backups
 > If {file} is a folder, lists files in a directory, otherwise returns file contents as `text/plain`
 
 > Query options:
